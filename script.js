@@ -3,9 +3,6 @@ const CardsContainer = document.querySelector('.cards_container');
 const NewGameButton = document.querySelector('.new_game_button'); // Select the new game button
 const MatchesDisplay = document.querySelector('.match'); // Select the matches counter display
 const MovesDisplay = document.querySelector('.move'); // Select the moves counter display
-const GameStatusDisplay = document.createElement('div'); // Create a new element for the game status
-GameStatusDisplay.classList.add('game_status');
-document.body.appendChild(GameStatusDisplay); // Append it to the body or another container
 
 // Define an array with 15 colors
 let colors = [
@@ -35,8 +32,9 @@ let Matches = 0;
 
 // Function to initialize the game
 function initializeGame() {
+   // Make the cards container visible
+  CardsContainer.style.display = 'grid';
   CardsContainer.innerHTML = ''; // Clear the existing cards
-  GameStatusDisplay.textContent = ''; // Clear any previous game status message
 
   // Reset counters
   Moves = 0;
@@ -86,9 +84,7 @@ function initializeGame() {
 function showCardColor(cardInner, color) {
   if (isComparing || cardInner.classList.contains('flipped')) return; // Prevent clicks during comparison or on already flipped cards
 
-  // Increment and update moves
-  Moves++;
-  updateCounters();
+
 
   // Flip the card to reveal the front
   cardInner.classList.add('flipped');
@@ -99,7 +95,8 @@ function showCardColor(cardInner, color) {
   } else {
       secondCard = { cardInner, color };
       isComparing = true;
-
+      Moves++; // Increment the moves counter
+      updateCounters();
       compareCards();
   }
 }
@@ -147,17 +144,21 @@ function updateCounters() {
   MatchesDisplay.textContent = `Matches: ${Matches}`;
 }
 
-// Function to display the game finished message
+
+// Function to display the game finished message as an alert
 function displayGameFinished() {
   CardsContainer.innerHTML = ''; // Clear the cards
-  //delete the cards container to set the game status in the center
+
   CardsContainer.style.display = 'none';
-  GameStatusDisplay.textContent = 'Game finished successfully!';
-  GameStatusDisplay.style.color = 'green'; // Optional: Add styling
-  GameStatusDisplay.style.fontSize = '50px'; // Optional: Adjust font size
-  GameStatusDisplay.style.textAlign = 'center'; // Center the message
-  GameStatusDisplay.style.marginTop = '50px';
+
+  //wait until the cards disappear to show the alert
+  setTimeout(() => {
+    alert('you finished successfully with ' + Moves + ' moves\nkeep going!');
+    initializeGame();
+  }, 200);
+  // Optionally reset the game automatically after the alert
 }
+
 
 // Event listener for the "New Game" button
 NewGameButton.addEventListener('click', initializeGame);
