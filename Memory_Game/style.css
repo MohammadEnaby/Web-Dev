@@ -1,0 +1,105 @@
+
+body{
+    background-color: #fbf8f1;
+}
+
+h1{
+    color: black;
+    font-size: 50px;
+    text-align: center;
+}
+.game_info_bar{
+    padding: 9px 1%;
+    background-color: rgb(211, 196, 174);
+    font-size: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 0%;
+    justify-self: center;
+}
+
+.new_game_button{
+    background-color: rgb(209, 164, 97);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    size-adjust: 100px;
+}
+
+.new_game_button:hover{
+    background-color: rgb(133, 112, 81);
+}
+.match , .move{
+    padding: 15px 32px;
+    align-self: right;
+    align-content: right;
+    font-size: 25px;
+    margin: 4px 2px;
+    float: right;
+}
+
+
+.cards_container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 90px); /*5 columns, equally spaced*/
+    grid-template-rows: repeat(6, 110px);    /* 6 rows, equally spaced */
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.Card {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.card {
+    width: 90px;
+    height: 110px;
+    perspective: 100px; /* Enables 3D effects */
+}
+
+.card_inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 0.25s;
+    cursor: pointer;
+}
+
+.card_inner.flipped {
+    transform: rotateY(180deg);
+} 
+
+.card_front, .card_back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+}
+
+.card_front {
+    background-color: var(--card-color, #fff);
+    transform: rotateY(180deg); /* Initially hidden */
+}
+
+.card_back {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
