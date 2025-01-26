@@ -85,7 +85,6 @@ function showCardColor(cardInner, color) {
   if (isComparing || cardInner.classList.contains('flipped')) return; // Prevent clicks during comparison or on already flipped cards
 
 
-
   // Flip the card to reveal the front
   cardInner.classList.add('flipped');
 
@@ -111,8 +110,7 @@ function compareCards() {
 
     // If the cards match, leave them flipped and reset selection
     setTimeout(() => {
-      firstCard.cardInner.style.visibility = 'hidden'; // Hide the matched cards
-      secondCard.cardInner.style.visibility = 'hidden';
+      
       resetSelection();
     }, 500);
 
