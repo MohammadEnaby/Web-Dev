@@ -7,9 +7,10 @@ h1 {
     text-align: center;
 }
 
-.search_event {
-    display: flex;
-    margin-left: 2%;
+.search_event, .search_event_today {
+    display: grid;
+    grid-template-columns: repeat(2, 22%);
+    padding: 15px 35px;
 }
 
 .search_event_for_specific_date {
@@ -39,4 +40,28 @@ h1 {
     resize: none;
     width: 250px;
     height: 50px;
+}
+
+.search_event_for_today_date {
+    margin-top: 2%;
+    background-color: #38e896;
+    border: none;
+    padding: 22px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: large;
+    border-radius: 10px; 
+}
+
+.search_event_for_today_date:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.data{
+    display: flex;
+    margin-left: 3%;
+    font-size: larger;
+    border-color: #000000;
+    border: #000000;
 }
